@@ -1,20 +1,37 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import {
   Bars3Icon,
   XMarkIcon,
   UserIcon,
   ArrowRightOnRectangleIcon,
+  CogIcon,
+  UsersIcon,
+  WrenchScrewdriverIcon,
+  HomeIcon,
 } from "@heroicons/react/24/outline";
 import { FaLeaf } from "react-icons/fa";
 import { useAuth } from "../../context/AuthContext";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
   const location = useLocation();
   const navigate = useNavigate();
   const { user, isAuthenticated, logout } = useAuth();
 
+  // Handle scroll effect
+  useEffect(() => {
+    const handleScroll = () => {
+      const isScrolled = window.scrollY > 20;
+      setScrolled(isScrolled);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  // Regular navigation for non-admin users
   const navigation = [
     { name: "Home", href: "/" },
     { name: "Services", href: "/services" },
@@ -22,6 +39,18 @@ const Navbar = () => {
     { name: "Blog", href: "/blog" },
     { name: "About", href: "/about" },
     { name: "Contact", href: "/contact" },
+  ];
+
+  // Admin navigation items
+  const adminNavigation = [
+    { name: "Dashboard", href: "/dashboard", icon: HomeIcon },
+    { name: "Customer Management", href: "/admin/customers", icon: UsersIcon },
+    {
+      name: "Maintenance",
+      href: "/admin/maintenance",
+      icon: WrenchScrewdriverIcon,
+    },
+    { name: "Settings", href: "/admin/settings", icon: CogIcon },
   ];
 
   const isActiveLink = (href) => {
@@ -34,68 +63,162 @@ const Navbar = () => {
     setIsOpen(false);
   };
 
+  const isAdmin = user?.role === "admin";
+
+  // Choose navigation based on user role
+  const currentNavigation = isAdmin ? adminNavigation : navigation;
+
   return (
-    <nav className="bg-white shadow-lg sticky top-0 z-50">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <nav
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+        scrolled
+          ? "backdrop-blur-md bg-white/50 shadow-lg border-none border-white/20"
+          : "bg-transparent"
+      }`}
+    >
+      <div className="mx-20 px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between h-16">
           {/* Logo */}
           <div className="flex items-center">
             <Link
               to="/"
-              className="flex items-center space-x-2 text-green-600 hover:text-green-700 transition-colors"
+              className="flex items-center space-x-2 group transition-all duration-300"
             >
-              <FaLeaf className="h-8 w-8" />
-              <span className="text-xl font-bold">EcoScape Hub</span>
+              <div
+                className={`p-2 rounded-xl transition-all duration-300 ${
+                  scrolled
+                    ? "bg-green-100/80 backdrop-blur-sm"
+                    : "bg-white/20 backdrop-blur-sm"
+                }`}
+              >
+                <FaLeaf
+                  className={`h-6 w-6 transition-colors duration-300 ${
+                    scrolled
+                      ? "text-green-600"
+                      : "text-green-600 group-hover:text-green-200"
+                  }`}
+                />
+              </div>
+              <span
+                className={`text-xl font-bold transition-colors duration-300 ${
+                  scrolled
+                    ? "text-gray-900"
+                    : "text-gray-700 group-hover:text-green-100"
+                }`}
+              >
+                EcoScape Hub
+              </span>
             </Link>
           </div>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center space-x-8">
-            {navigation.map((item) => (
-              <Link
-                key={item.name}
-                to={item.href}
-                className={`nav-link px-3 py-2 text-sm font-medium transition-colors ${
-                  isActiveLink(item.href)
-                    ? "text-green-600 active"
-                    : "text-gray-700 hover:text-green-600"
-                }`}
-              >
-                {item.name}
-              </Link>
-            ))}
+          <div className="hidden md:flex items-center space-x-2">
+            {currentNavigation.map((item) => {
+              const IconComponent = item.icon;
+              return (
+                <Link
+                  key={item.name}
+                  to={item.href}
+                  className={`group relative px-4 py-2 rounded-xl text-sm font-medium transition-all duration-300 ${
+                    isActiveLink(item.href)
+                      ? scrolled
+                        ? "bg-green-100/80 text-green-700 backdrop-blur-sm"
+                        : "bg-green-100/80 text-green-700 backdrop-blur-sm"
+                      : scrolled
+                      ? "text-gray-700 hover:bg-gray-100/80 hover:text-green-600 backdrop-blur-sm"
+                      : " hover:bg-white/20 hover:text-gray-700 backdrop-blur-sm text-gray-700"
+                  }`}
+                >
+                  <div className="flex items-center space-x-2">
+                    {IconComponent && <IconComponent className="h-4 w-4" />}
+                    <span>{item.name}</span>
+                  </div>
+                  {isActiveLink(item.href) && (
+                    <div
+                      className={`absolute bottom-0 left-1/2 transform -translate-x-1/2 w-1 h-1 rounded-full transition-colors duration-300 ${
+                        scrolled ? "bg-green-600" : "bg-green-600"
+                      }`}
+                    ></div>
+                  )}
+                </Link>
+              );
+            })}
           </div>
 
           {/* Desktop Auth Section */}
-          <div className="hidden md:flex items-center space-x-4">
+          <div className="hidden md:flex items-center space-x-3">
             {isAuthenticated ? (
-              <div className="flex items-center space-x-4">
-                <Link
-                  to="/dashboard"
-                  className="flex items-center space-x-2 text-gray-700 hover:text-green-600 transition-colors"
+              <div className="flex items-center space-x-3">
+                {/* User Profile */}
+                <div
+                  className={`flex items-center space-x-2 px-4 py-2 rounded-xl transition-all duration-300 ${
+                    scrolled
+                      ? "bg-gray-100/80 backdrop-blur-sm"
+                      : "bg-gray-100/80 backdrop-blur-sm"
+                  }`}
                 >
-                  <UserIcon className="h-5 w-5" />
-                  <span className="text-sm font-medium">
-                    {user?.name || "Dashboard"}
-                  </span>
-                </Link>
+                  <div
+                    className={`w-8 h-8 rounded-lg flex items-center justify-center transition-colors duration-300 ${
+                      scrolled
+                        ? "bg-green-100 text-green-600"
+                        : "bg-green-100 text-green-600"
+                    }`}
+                  >
+                    <UserIcon className="h-4 w-4" />
+                  </div>
+                  <div>
+                    <span
+                      className={`text-sm font-medium transition-colors duration-300 ${
+                        scrolled ? "text-gray-900" : "text-gray-700"
+                      }`}
+                    >
+                      {user?.name || "User"}
+                    </span>
+                    {isAdmin && (
+                      <div
+                        className={`text-xs transition-colors duration-300 ${
+                          scrolled ? "text-green-600" : "text-green-600"
+                        }`}
+                      >
+                        Admin
+                      </div>
+                    )}
+                  </div>
+                </div>
+
+                {/* Logout Button */}
                 <button
                   onClick={handleLogout}
-                  className="flex items-center space-x-2 text-gray-700 hover:text-red-600 transition-colors"
+                  className={`flex items-center space-x-2 px-4 py-2 rounded-xl text-sm font-medium transition-all duration-300 ${
+                    scrolled
+                      ? "text-red-600 hover:bg-red-50/80 backdrop-blur-sm"
+                      : "text-red-600 hover:bg-red-50/80 backdrop-blur-sm"
+                  }`}
                 >
-                  <ArrowRightOnRectangleIcon className="h-5 w-5" />
-                  <span className="text-sm font-medium">Logout</span>
+                  <ArrowRightOnRectangleIcon className="h-4 w-4" />
+                  <span>Logout</span>
                 </button>
               </div>
             ) : (
-              <div className="flex items-center space-x-4">
+              <div className="flex items-center space-x-3">
                 <Link
                   to="/login"
-                  className="text-gray-700 hover:text-green-600 font-medium transition-colors"
+                  className={`px-4 py-2 rounded-xl text-sm font-medium transition-all duration-300 ${
+                    scrolled
+                      ? "text-gray-700 hover:bg-gray-100/80 backdrop-blur-sm"
+                      : "text-white hover:bg-white/20 backdrop-blur-sm"
+                  }`}
                 >
                   Login
                 </Link>
-                <Link to="/register" className="btn-primary text-sm">
+                <Link
+                  to="/register"
+                  className={`px-6 py-2 rounded-xl text-sm font-medium transition-all duration-300 ${
+                    scrolled
+                      ? "bg-green-600 text-white hover:bg-green-700 shadow-lg"
+                      : "bg-white/20 text-white hover:bg-white/30 backdrop-blur-sm"
+                  }`}
+                >
                   Get Started
                 </Link>
               </div>
@@ -106,7 +229,11 @@ const Navbar = () => {
           <div className="md:hidden flex items-center">
             <button
               onClick={() => setIsOpen(!isOpen)}
-              className="text-gray-700 hover:text-green-600 focus:outline-none focus:text-green-600 transition-colors"
+              className={`p-2 rounded-xl transition-all duration-300 ${
+                scrolled
+                  ? "text-gray-700 hover:bg-gray-100/80 backdrop-blur-sm"
+                  : "text-white hover:bg-white/20 backdrop-blur-sm"
+              }`}
             >
               {isOpen ? (
                 <XMarkIcon className="h-6 w-6" />
@@ -120,61 +247,81 @@ const Navbar = () => {
 
       {/* Mobile Navigation */}
       {isOpen && (
-        <div className="md:hidden">
-          <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3 bg-white border-t border-gray-200">
-            {navigation.map((item) => (
-              <Link
-                key={item.name}
-                to={item.href}
-                onClick={() => setIsOpen(false)}
-                className={`block px-3 py-2 text-base font-medium transition-colors ${
-                  isActiveLink(item.href)
-                    ? "text-green-600 bg-green-50"
-                    : "text-gray-700 hover:text-green-600 hover:bg-green-50"
-                }`}
-              >
-                {item.name}
-              </Link>
-            ))}
+        <div className="md:hidden absolute top-full left-0 right-0">
+          <div className="mx-20 mt-2">
+            <div className="backdrop-blur-md bg-white/90 rounded-2xl shadow-xl border-none border-transparent overflow-hidden">
+              {/* Navigation Links */}
+              <div className="px-4 py-4 space-y-1">
+                {currentNavigation.map((item) => {
+                  const IconComponent = item.icon;
+                  return (
+                    <Link
+                      key={item.name}
+                      to={item.href}
+                      onClick={() => setIsOpen(false)}
+                      className={`flex items-center space-x-3 px-4 py-3 rounded-xl text-base font-medium transition-all duration-200 ${
+                        isActiveLink(item.href)
+                          ? "bg-green-100 text-green-700"
+                          : "text-gray-700 hover:bg-gray-100"
+                      }`}
+                    >
+                      {IconComponent && <IconComponent className="h-5 w-5" />}
+                      <span>{item.name}</span>
+                    </Link>
+                  );
+                })}
+              </div>
 
-            {/* Mobile Auth Section */}
-            <div className="border-t border-gray-200 pt-4 pb-3">
-              {isAuthenticated ? (
-                <div className="space-y-1">
-                  <Link
-                    to="/dashboard"
-                    onClick={() => setIsOpen(false)}
-                    className="flex items-center space-x-2 px-3 py-2 text-base font-medium text-gray-700 hover:text-green-600 hover:bg-green-50 transition-colors"
-                  >
-                    <UserIcon className="h-5 w-5" />
-                    <span>{user?.name || "Dashboard"}</span>
-                  </Link>
-                  <button
-                    onClick={handleLogout}
-                    className="flex items-center space-x-2 px-3 py-2 text-base font-medium text-gray-700 hover:text-red-600 hover:bg-red-50 transition-colors w-full text-left"
-                  >
-                    <ArrowRightOnRectangleIcon className="h-5 w-5" />
-                    <span>Logout</span>
-                  </button>
-                </div>
-              ) : (
-                <div className="space-y-1">
-                  <Link
-                    to="/login"
-                    onClick={() => setIsOpen(false)}
-                    className="block px-3 py-2 text-base font-medium text-gray-700 hover:text-green-600 hover:bg-green-50 transition-colors"
-                  >
-                    Login
-                  </Link>
-                  <Link
-                    to="/register"
-                    onClick={() => setIsOpen(false)}
-                    className="block px-3 py-2 text-base font-medium bg-green-600 text-white rounded-md hover:bg-green-700 transition-colors mx-3"
-                  >
-                    Get Started
-                  </Link>
-                </div>
-              )}
+              {/* Mobile Auth Section */}
+              <div
+                className="border-t
+               border-gray-200/50 px-4 py-4"
+              >
+                {isAuthenticated ? (
+                  <div className="space-y-2">
+                    {/* User Info */}
+                    <div className="flex items-center space-x-3 px-4 py-3 bg-gray-50/80 rounded-xl">
+                      <div className="w-10 h-10 bg-green-100 rounded-lg flex items-center justify-center">
+                        <UserIcon className="h-5 w-5 text-green-600" />
+                      </div>
+                      <div>
+                        <div className="text-sm font-medium text-gray-900">
+                          {user?.name || "User"}
+                        </div>
+                        {isAdmin && (
+                          <div className="text-xs text-green-600">Admin</div>
+                        )}
+                      </div>
+                    </div>
+
+                    {/* Logout Button */}
+                    <button
+                      onClick={handleLogout}
+                      className="flex items-center space-x-3 px-4 py-3 text-base font-medium text-red-600 hover:bg-red-50 rounded-xl transition-colors w-full text-left"
+                    >
+                      <ArrowRightOnRectangleIcon className="h-5 w-5" />
+                      <span>Logout</span>
+                    </button>
+                  </div>
+                ) : (
+                  <div className="space-y-2">
+                    <Link
+                      to="/login"
+                      onClick={() => setIsOpen(false)}
+                      className="block px-4 py-3 text-base font-medium text-gray-700 hover:bg-gray-100 rounded-xl transition-colors"
+                    >
+                      Login
+                    </Link>
+                    <Link
+                      to="/register"
+                      onClick={() => setIsOpen(false)}
+                      className="block px-4 py-3 text-base font-medium bg-green-600 text-white rounded-xl hover:bg-green-700 transition-colors text-center"
+                    >
+                      Get Started
+                    </Link>
+                  </div>
+                )}
+              </div>
             </div>
           </div>
         </div>

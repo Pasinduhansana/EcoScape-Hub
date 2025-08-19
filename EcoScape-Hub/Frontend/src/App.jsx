@@ -21,6 +21,7 @@ import Register from "./pages/auth/Register";
 import Dashboard from "./pages/Dashboard";
 import BookService from "./pages/BookService";
 import ForgotPassword from "./pages/auth/ForgotPassword";
+import CustomerManagement from "./pages/admin/CustomerManagement";
 
 // Context
 import { AuthProvider } from "./context/AuthContext";
@@ -67,6 +68,15 @@ function App() {
                 </ProtectedRoute>
               }
             />
+            {/* Admin Protected Routes */}
+            <Route
+              path="/admin/customers"
+              element={
+                <ProtectedRoute requireAdmin={true}>
+                  <CustomerManagement />
+                </ProtectedRoute>
+              }
+            />
 
             {/* 404 Route */}
             <Route
@@ -86,7 +96,7 @@ function App() {
 
           {/* Toast Notifications */}
           <Toaster
-            position="top-right"
+            position="top-center"
             toastOptions={{
               duration: 4000,
               style: {

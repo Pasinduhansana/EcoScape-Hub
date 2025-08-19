@@ -52,9 +52,9 @@ const Footer = () => {
   ];
 
   return (
-    <footer className="bg-gradient-to-b from-gray-900 to-black text-white">
+    <footer className="bg-gradient-to-b from-gray-900 to-black  text-white">
       {/* Newsletter Section */}
-      <div className="bg-gradient-to-r from-green-600 to-green-700 relative overflow-hidden">
+      <div className="bg-gradient-to-r from-green-600 to-green-700  relative overflow-hidden">
         {/* Background Pattern */}
         <div className="absolute inset-0 opacity-5">
           <div
@@ -100,7 +100,7 @@ const Footer = () => {
       </div>
 
       {/* Main Footer Content */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
+      <div className="mx-auto lg:mx-10 px-4 sm:px-6 lg:px-8 py-5 pt-10">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 xl:grid-cols-5 gap-12">
           {/* Company Info */}
           <div className="lg:col-span-2">
@@ -159,12 +159,12 @@ const Footer = () => {
               Quick Links
               <div className="absolute bottom-0 left-0 w-8 h-0.5 bg-gradient-to-r from-green-400 to-green-600"></div>
             </h4>
-            <ul className="space-y-3">
+            <ul className="space-y-3 lg:-ml-5">
               {quickLinks.map((link, index) => (
                 <li key={index}>
                   <Link
                     to={link.href}
-                    className="text-gray-300 hover:text-green-400 transition-colors duration-300 flex items-center group"
+                    className="text-gray-300 hover:text-green-400 transition-colors duration-300 flex items-center group text-[14px]"
                   >
                     <ArrowRightIcon className="w-3 h-3 mr-2 opacity-0 group-hover:opacity-100 group-hover:translate-x-1 transition-all duration-300" />
                     {link.name}
@@ -180,12 +180,12 @@ const Footer = () => {
               Services
               <div className="absolute bottom-0 left-0 w-8 h-0.5 bg-gradient-to-r from-green-400 to-green-600"></div>
             </h4>
-            <ul className="space-y-3">
+            <ul className="space-y-3 lg:-ml-5">
               {services.map((service, index) => (
                 <li key={index}>
                   <Link
                     to={service.href}
-                    className="text-gray-300 hover:text-green-400 transition-colors duration-300 flex items-center group text-sm"
+                    className="text-gray-300 hover:text-green-400 transition-colors duration-300 flex items-center group text-[14px]"
                   >
                     <ArrowRightIcon className="w-3 h-3 mr-2 opacity-0 group-hover:opacity-100 group-hover:translate-x-1 transition-all duration-300" />
                     {service.name}
@@ -201,12 +201,12 @@ const Footer = () => {
               Resources
               <div className="absolute bottom-0 left-0 w-8 h-0.5 bg-gradient-to-r from-green-400 to-green-600"></div>
             </h4>
-            <ul className="space-y-3">
+            <ul className="space-y-3 lg:-ml-5">
               {resources.map((resource, index) => (
                 <li key={index}>
                   <Link
                     to={resource.href}
-                    className="text-gray-300 hover:text-green-400 transition-colors duration-300 flex items-center group text-sm"
+                    className="text-gray-300 hover:text-green-400 transition-colors duration-300 flex items-center group text-[14px]"
                   >
                     <ArrowRightIcon className="w-3 h-3 mr-2 opacity-0 group-hover:opacity-100 group-hover:translate-x-1 transition-all duration-300" />
                     {resource.name}
@@ -218,7 +218,7 @@ const Footer = () => {
         </div>
 
         {/* Social Media & Bottom Section */}
-        <div className="mt-16 pt-8 border-t border-gray-800">
+        <div className="mt-8 pt-8 border-t  border-gray-800">
           <div className="flex flex-col lg:flex-row justify-between items-center gap-8">
             {/* Social Media */}
             <div className="flex items-center space-x-6">
@@ -253,7 +253,7 @@ const Footer = () => {
         </div>
 
         {/* Legal Links */}
-        <div className="mt-8 pt-6 border-t border-gray-800 text-center">
+        <div className="mt-8 pt-4 border-t border-gray-800 text-center">
           <div className="flex flex-wrap justify-center gap-6 text-sm">
             <Link
               to="/privacy"
