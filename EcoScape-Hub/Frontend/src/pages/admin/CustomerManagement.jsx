@@ -330,7 +330,7 @@ const CustomerManagement = () => {
     <motion.div
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
-      className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50/30 to-indigo-50/50 relative overflow-hidden"
+      className="min-h-screen bg-gradient-to-br px-[20px] from-slate-50 via-blue-50/30 to-indigo-50/50 relative overflow-hidden"
     >
       {/* Background Pattern */}
       <div
@@ -344,57 +344,17 @@ const CustomerManagement = () => {
 
       <div className="relative mx-2.5 py-8">
         {/* Header */}
-        <motion.div
-          initial={{ y: -20, opacity: 0 }}
-          animate={{ y: 0, opacity: 1 }}
-          transition={{ delay: 0.1 }}
-          className="mb-8"
-        >
-          <div className="backdrop-blur-sm bg-white/80 rounded-3xl shadow-xl border border-white/20 p-8 relative overflow-hidden">
-            {/* Header Background Gradient */}
-            <div className="absolute inset-0 bg-gradient-to-r from-green-500/5 via-blue-500/5 to-purple-500/5 rounded-3xl"></div>
-
-            <div className="relative flex items-center justify-between">
-              <div className="flex items-center space-x-6">
-                <div className="w-16 h-16 bg-gradient-to-br from-green-400 via-blue-500 to-purple-600 rounded-2xl flex items-center justify-center shadow-lg">
-                  <UserIcon className="w-8 h-8 text-white" />
-                </div>
-                <div>
-                  <h1 className="text-5xl font-black bg-gradient-to-r from-gray-900 via-blue-800 to-purple-800 bg-clip-text text-transparent leading-tight">
-                    Customer Hub
-                  </h1>
-                  <p className="text-gray-600 mt-1 text-lg font-medium">
-                    Advanced customer relationship management
-                  </p>
-                </div>
-              </div>
-              <div className="hidden lg:flex items-center space-x-4">
-                <div className="text-right">
-                  <div className="text-2xl font-bold text-gray-900">
-                    {stats.totalCustomers}
-                  </div>
-                  <div className="text-sm text-gray-500 font-medium">
-                    Total Customers
-                  </div>
-                </div>
-                <div className="w-12 h-12 bg-gradient-to-br from-emerald-400 to-cyan-500 rounded-xl flex items-center justify-center">
-                  <ChartBarIcon className="w-6 h-6 text-white" />
-                </div>
-              </div>
-            </div>
-          </div>
-        </motion.div>
 
         {/* Statistics Cards */}
         <motion.div
           initial={{ y: 20, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           transition={{ delay: 0.2 }}
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6 mb-8"
+          className="grid grid-cols-1 md:grid-cols-2 pt-16 lg:grid-cols-5 gap-6 mb-8"
         >
           <motion.div
             whileHover={{ y: -5, scale: 1.02 }}
-            className="group backdrop-blur-sm bg-white/70 rounded-3xl shadow-xl border border-white/30 p-6 hover:shadow-2xl transition-all duration-500 relative overflow-hidden"
+            className="group backdrop-blur-sm bg-white/70 rounded-3xl shadow-sm border border-white/30 p-6 hover:shadow-xl transition-all duration-500 relative overflow-hidden"
           >
             <div className="absolute inset-0 bg-gradient-to-br from-blue-500/10 to-cyan-500/10 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
             <div className="relative flex items-center justify-between">
@@ -415,7 +375,7 @@ const CustomerManagement = () => {
 
           <motion.div
             whileHover={{ y: -5, scale: 1.02 }}
-            className="group backdrop-blur-sm bg-white/70 rounded-3xl shadow-xl border border-white/30 p-6 hover:shadow-2xl transition-all duration-500 relative overflow-hidden"
+            className="group backdrop-blur-sm bg-white/70 rounded-3xl shadow-sm border border-white/30 p-6 hover:shadow-xl transition-all duration-500 relative overflow-hidden"
           >
             <div className="absolute inset-0 bg-gradient-to-br from-green-500/10 to-emerald-500/10 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
             <div className="relative flex items-center justify-between">
@@ -436,7 +396,7 @@ const CustomerManagement = () => {
 
           <motion.div
             whileHover={{ y: -5, scale: 1.02 }}
-            className="group backdrop-blur-sm bg-white/70 rounded-3xl shadow-xl border border-white/30 p-6 hover:shadow-2xl transition-all duration-500 relative overflow-hidden"
+            className="group backdrop-blur-sm bg-white/70 rounded-3xl shadow-sm border border-white/30 p-6 hover:shadow-xl transition-all duration-500 relative overflow-hidden"
           >
             <div className="absolute inset-0 bg-gradient-to-br from-purple-500/10 to-violet-500/10 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
             <div className="relative flex items-center justify-between">
@@ -457,7 +417,7 @@ const CustomerManagement = () => {
 
           <motion.div
             whileHover={{ y: -5, scale: 1.02 }}
-            className="group backdrop-blur-sm bg-white/70 rounded-3xl shadow-xl border border-white/30 p-6 hover:shadow-2xl transition-all duration-500 relative overflow-hidden"
+            className="group backdrop-blur-sm bg-white/70 rounded-3xl shadow-sm border border-white/30 p-6 hover:shadow-xl transition-all duration-500 relative overflow-hidden"
           >
             <div className="absolute inset-0 bg-gradient-to-br from-yellow-500/10 to-orange-500/10 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
             <div className="relative flex items-center justify-between">
@@ -478,7 +438,7 @@ const CustomerManagement = () => {
 
           <motion.div
             whileHover={{ y: -5, scale: 1.02 }}
-            className="group backdrop-blur-sm bg-white/70 rounded-3xl shadow-xl border border-white/30 p-6 hover:shadow-2xl transition-all duration-500 relative overflow-hidden"
+            className="group backdrop-blur-sm bg-white/70 rounded-3xl shadow-sm border border-white/30 p-6 hover:shadow-xl transition-all duration-500 relative overflow-hidden"
           >
             <div className="absolute inset-0 bg-gradient-to-br from-indigo-500/10 to-purple-500/10 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
             <div className="relative flex items-center justify-between">
@@ -503,7 +463,7 @@ const CustomerManagement = () => {
           initial={{ y: 20, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           transition={{ delay: 0.3 }}
-          className="backdrop-blur-sm bg-white/80 rounded-3xl shadow-xl border border-white/20 mb-8 relative overflow-hidden"
+          className="backdrop-blur-sm bg-white/80 rounded-3xl shadow-sm border border-white/20 mb-8 relative overflow-hidden"
         >
           <div className="absolute inset-0 bg-gradient-to-r from-gray-50/50 to-blue-50/50 rounded-3xl"></div>
           <div className="relative p-8">
@@ -517,7 +477,7 @@ const CustomerManagement = () => {
                     placeholder="Search customers..."
                     value={searchTerm}
                     onChange={(e) => setSearchTerm(e.target.value)}
-                    className="pl-12 pr-6 py-4 w-full border-0 bg-white/70 backdrop-blur-sm rounded-2xl shadow-lg focus:ring-2 focus:ring-blue-500/30 focus:shadow-xl transition-all duration-300 placeholder-gray-400 text-gray-700 font-medium"
+                    className="w-full pl-12 pr-4 py-[10px] rounded-xl border border-gray-200 focus:ring-1 outline-none focus:ring-green-500 focus:border-transparent transition-all duration-300 text-sm bg-gray-50 focus:bg-white"
                   />
                 </div>
 
@@ -526,7 +486,7 @@ const CustomerManagement = () => {
                   <select
                     value={filterStatus}
                     onChange={(e) => setFilterStatus(e.target.value)}
-                    className="px-6 py-4 border-0 bg-white/70 backdrop-blur-sm rounded-2xl shadow-lg focus:ring-2 focus:ring-blue-500/30 focus:shadow-xl transition-all duration-300 text-gray-700 font-medium min-w-[140px]"
+                    className="w-full pl-4 pr-4 h-[40px] rounded-xl border border-gray-200 focus:ring-1 outline-none focus:ring-green-500 focus:border-transparent transition-all duration-300 text-sm bg-gray-50 focus:bg-white"
                   >
                     <option value="all">All Status</option>
                     <option value="active">Active</option>
@@ -537,7 +497,7 @@ const CustomerManagement = () => {
                   <select
                     value={filterLoyalty}
                     onChange={(e) => setFilterLoyalty(e.target.value)}
-                    className="px-6 py-4 border-0 bg-white/70 backdrop-blur-sm rounded-2xl shadow-lg focus:ring-2 focus:ring-blue-500/30 focus:shadow-xl transition-all duration-300 text-gray-700 font-medium min-w-[160px]"
+                    className="w-full pl-4 pr-4 min-w-[160px] h-[40px] rounded-xl border border-gray-200 focus:ring-1 outline-none focus:ring-green-500 focus:border-transparent transition-all duration-300 text-sm bg-gray-50 focus:bg-white"
                   >
                     <option value="all">All Loyalty Levels</option>
                     <option value="bronze">Bronze</option>
@@ -553,7 +513,7 @@ const CustomerManagement = () => {
                 whileHover={{ scale: 1.05, y: -2 }}
                 whileTap={{ scale: 0.95 }}
                 onClick={handleCreateCustomer}
-                className="group relative flex items-center space-x-3 bg-gradient-to-r from-green-500 via-blue-500 to-purple-600 text-white px-8 py-4 rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-300 font-semibold overflow-hidden"
+                className="bg-gradient-to-r from-green-600 to-green-700 text-white py-[8px] px-6 rounded-xl font-semibold hover:from-green-700 hover:to-green-800 disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-300 flex items-center justify-center text-base shadow-lg hover:shadow-xl transform hover:-translate-y-0.5"
               >
                 <div className="absolute inset-0 bg-gradient-to-r from-green-600 via-blue-600 to-purple-700 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                 <PlusIcon className="h-5 w-5 relative z-10" />
@@ -561,15 +521,7 @@ const CustomerManagement = () => {
               </motion.button>
             </div>
           </div>
-        </motion.div>
 
-        {/* Customers Table */}
-        <motion.div
-          initial={{ y: 20, opacity: 0 }}
-          animate={{ y: 0, opacity: 1 }}
-          transition={{ delay: 0.4 }}
-          className="backdrop-blur-sm bg-white/90 rounded-3xl shadow-2xl border border-white/30 overflow-hidden"
-        >
           <div className="overflow-x-auto">
             <table className="min-w-full divide-y divide-gray-100/50">
               <thead className="bg-gradient-to-r from-gray-50/80 to-blue-50/80 backdrop-blur-sm">

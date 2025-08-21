@@ -141,6 +141,20 @@ const customerSchema = new mongoose.Schema(
   }
 );
 
+// Migration pre-save hook
+customerSchema.pre("save", function (next) {
+  // Handle migration from old personalInfo structure
+  if (this.personalInfo && !this.email) {
+    this.email = this.personalInfo.email;
+    this.name =
+      this.personalInfo.firstName +
+      (this.personalInfo.lastName ? ` ${this.personalInfo.lastName}` : "");
+    this.phone = this.personalInfo.phone;
+    this.personalInfo = undefined; // Remove old structure
+  }
+  next();
+});
+
 // Auto-generate unique registration number before saving
 customerSchema.pre("save", async function (next) {
   if (!this.registrationNumber) {

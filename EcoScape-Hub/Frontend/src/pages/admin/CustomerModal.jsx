@@ -242,15 +242,19 @@ const CustomerModal = ({ customer, onClose, onSuccess }) => {
                     <label className="block text-sm font-semibold text-gray-700 mb-3">
                       Full Name *
                     </label>
-                    <input
-                      type="text"
-                      name="name"
-                      value={formData.name}
-                      onChange={handleInputChange}
-                      required
-                      className="w-full px-4 py-4 border-0 bg-white/70 backdrop-blur-sm rounded-2xl shadow-lg focus:ring-2 focus:ring-blue-500/30 focus:shadow-xl transition-all duration-300 placeholder-gray-400 text-gray-700 font-medium"
-                      placeholder="Enter full name"
-                    />
+                    <div className="relative">
+                      <UserIcon className="absolute left-4 top-1/2 transform -translate-y-1/2 h-5 w-5 text-gray-400" />
+
+                      <input
+                        type="text"
+                        name="name"
+                        value={formData.name}
+                        onChange={handleInputChange}
+                        required
+                        className="w-full pl-12 pr-4 py-[10px] rounded-xl border  border-gray-200 focus:ring-1 outline-none focus:ring-green-500 focus:border-transparent transition-all duration-300 text-sm bg-gray-50 focus:bg-white"
+                        placeholder="Enter full name"
+                      />
+                    </div>
                   </div>
 
                   <div>
@@ -265,7 +269,7 @@ const CustomerModal = ({ customer, onClose, onSuccess }) => {
                         value={formData.email}
                         onChange={handleInputChange}
                         required
-                        className="w-full pl-12 pr-4 py-4 border-0 bg-white/70 backdrop-blur-sm rounded-2xl shadow-lg focus:ring-2 focus:ring-blue-500/30 focus:shadow-xl transition-all duration-300 placeholder-gray-400 text-gray-700 font-medium"
+                        className="w-full pl-12 pr-4 py-[10px] rounded-xl border  border-gray-200 focus:ring-1 outline-none focus:ring-green-500 focus:border-transparent transition-all duration-300 text-sm bg-gray-50 focus:bg-white"
                         placeholder="email@example.com"
                       />
                     </div>
@@ -283,7 +287,7 @@ const CustomerModal = ({ customer, onClose, onSuccess }) => {
                         value={formData.phone}
                         onChange={handleInputChange}
                         required
-                        className="w-full pl-12 pr-4 py-4 border-0 bg-white/70 backdrop-blur-sm rounded-2xl shadow-lg focus:ring-2 focus:ring-blue-500/30 focus:shadow-xl transition-all duration-300 placeholder-gray-400 text-gray-700 font-medium"
+                        className="w-full pl-12 pr-4 py-[10px] rounded-xl border  border-gray-200 focus:ring-1 outline-none focus:ring-green-500 focus:border-transparent transition-all duration-300 text-sm bg-gray-50 focus:bg-white"
                         placeholder="(555) 123-4567"
                       />
                     </div>
@@ -300,21 +304,12 @@ const CustomerModal = ({ customer, onClose, onSuccess }) => {
                         name="dateOfBirth"
                         value={formData.dateOfBirth}
                         onChange={handleInputChange}
-                        className="w-full pl-12 pr-4 py-4 border-0 bg-white/70 backdrop-blur-sm rounded-2xl shadow-lg focus:ring-2 focus:ring-blue-500/30 focus:shadow-xl transition-all duration-300 placeholder-gray-400 text-gray-700 font-medium"
+                        className="w-full pl-12 pr-4 py-[10px] rounded-xl border  border-gray-200 focus:ring-1 outline-none focus:ring-green-500 focus:border-transparent transition-all duration-300 text-sm bg-gray-50 focus:bg-white"
                       />
                     </div>
                   </div>
                 </div>
-              </motion.div>
-
-              {/* Address Section */}
-              <motion.div
-                initial={{ y: 20, opacity: 0 }}
-                animate={{ y: 0, opacity: 1 }}
-                transition={{ delay: 0.2 }}
-                className="backdrop-blur-sm bg-white/60 rounded-2xl p-6 border border-white/30"
-              >
-                <div className="flex items-center space-x-3 mb-6">
+                <div className="flex items-center space-x-3 mb-6  mt-16">
                   <div className="w-10 h-10 bg-gradient-to-br from-purple-400 to-purple-600 rounded-xl flex items-center justify-center">
                     <MapPinIcon className="w-5 h-5 text-white" />
                   </div>
@@ -328,15 +323,19 @@ const CustomerModal = ({ customer, onClose, onSuccess }) => {
                     <label className="block text-sm font-semibold text-gray-700 mb-3">
                       Street Address *
                     </label>
-                    <input
-                      type="text"
-                      name="address.street"
-                      value={formData.address.street}
-                      onChange={handleInputChange}
-                      required
-                      className="w-full px-4 py-4 border-0 bg-white/70 backdrop-blur-sm rounded-2xl shadow-lg focus:ring-2 focus:ring-blue-500/30 focus:shadow-xl transition-all duration-300 placeholder-gray-400 text-gray-700 font-medium"
-                      placeholder="123 Main Street"
-                    />
+                    <div className="relative">
+                      <MapPinIcon className="absolute left-4 top-1/2 transform -translate-y-1/2 h-5 w-5 text-gray-400" />
+
+                      <input
+                        type="text"
+                        name="address.street"
+                        value={formData.address.street}
+                        onChange={handleInputChange}
+                        required
+                        className="w-full pl-12 pr-4 py-[10px] rounded-xl border  border-gray-200 focus:ring-1 outline-none focus:ring-green-500 focus:border-transparent transition-all duration-300 text-sm bg-gray-50 focus:bg-white"
+                        placeholder="123 Main Street"
+                      />
+                    </div>
                   </div>
 
                   <div>
@@ -349,7 +348,7 @@ const CustomerModal = ({ customer, onClose, onSuccess }) => {
                       value={formData.address.city}
                       onChange={handleInputChange}
                       required
-                      className="w-full px-4 py-4 border-0 bg-white/70 backdrop-blur-sm rounded-2xl shadow-lg focus:ring-2 focus:ring-blue-500/30 focus:shadow-xl transition-all duration-300 placeholder-gray-400 text-gray-700 font-medium"
+                      className="w-full pl-12 pr-4 py-[10px] rounded-xl border  border-gray-200 focus:ring-1 outline-none focus:ring-green-500 focus:border-transparent transition-all duration-300 text-sm bg-gray-50 focus:bg-white"
                       placeholder="New York"
                     />
                   </div>
@@ -363,7 +362,7 @@ const CustomerModal = ({ customer, onClose, onSuccess }) => {
                       value={formData.address.state}
                       onChange={handleInputChange}
                       required
-                      className="w-full px-4 py-4 border-0 bg-white/70 backdrop-blur-sm rounded-2xl shadow-lg focus:ring-2 focus:ring-blue-500/30 focus:shadow-xl transition-all duration-300 placeholder-gray-400 text-gray-700 font-medium"
+                      className="w-full pl-12 pr-4 py-[10px] rounded-xl border  border-gray-200 focus:ring-1 outline-none focus:ring-green-500 focus:border-transparent transition-all duration-300 text-sm bg-gray-50 focus:bg-white"
                       placeholder="NY"
                     />
                   </div>
@@ -378,7 +377,7 @@ const CustomerModal = ({ customer, onClose, onSuccess }) => {
                       value={formData.address.zipCode}
                       onChange={handleInputChange}
                       required
-                      className="w-full px-4 py-4 border-0 bg-white/70 backdrop-blur-sm rounded-2xl shadow-lg focus:ring-2 focus:ring-blue-500/30 focus:shadow-xl transition-all duration-300 placeholder-gray-400 text-gray-700 font-medium"
+                      className="w-full pl-12 pr-4 py-[10px] rounded-xl border  border-gray-200 focus:ring-1 outline-none focus:ring-green-500 focus:border-transparent transition-all duration-300 text-sm bg-gray-50 focus:bg-white"
                       placeholder="10001"
                     />
                   </div>
@@ -391,8 +390,10 @@ const CustomerModal = ({ customer, onClose, onSuccess }) => {
                       name="address.country"
                       value={formData.address.country}
                       onChange={handleInputChange}
-                      className="w-full px-4 py-4 border-0 bg-white/70 backdrop-blur-sm rounded-2xl shadow-lg focus:ring-2 focus:ring-blue-500/30 focus:shadow-xl transition-all duration-300 text-gray-700 font-medium"
+                      className="w-full pl-12 pr-4 py-[10px] rounded-xl border  border-gray-200 focus:ring-1 outline-none focus:ring-green-500 focus:border-transparent transition-all duration-300 text-sm bg-gray-50 focus:bg-white"
                     >
+                      <option value="USA">Sri Lanka</option>
+                      <option value="USA">Indias</option>
                       <option value="USA">United States</option>
                       <option value="CAN">Canada</option>
                       <option value="MEX">Mexico</option>
@@ -437,7 +438,7 @@ const CustomerModal = ({ customer, onClose, onSuccess }) => {
                             onChange={() =>
                               handleServiceTypeChange(serviceType)
                             }
-                            className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 focus:ring-2"
+                            className="w-4 h-4 text-green-600 accent-emerald-500 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 outline-none"
                           />
                           <span className="ml-3 text-sm font-medium text-gray-700">
                             {serviceType}
@@ -456,7 +457,7 @@ const CustomerModal = ({ customer, onClose, onSuccess }) => {
                         name="preferences.communicationMethod"
                         value={formData.preferences.communicationMethod}
                         onChange={handleInputChange}
-                        className="w-full px-4 py-4 border-0 bg-white/70 backdrop-blur-sm rounded-2xl shadow-lg focus:ring-2 focus:ring-blue-500/30 focus:shadow-xl transition-all duration-300 text-gray-700 font-medium"
+                        className="w-full pl-12 pr-4 py-[10px] rounded-xl border  border-gray-200 focus:ring-1 outline-none focus:ring-green-500 focus:border-transparent transition-all duration-300 text-sm bg-gray-50 focus:bg-white"
                       >
                         <option value="email">Email</option>
                         <option value="phone">Phone</option>
@@ -473,7 +474,7 @@ const CustomerModal = ({ customer, onClose, onSuccess }) => {
                         name="status"
                         value={formData.status}
                         onChange={handleInputChange}
-                        className="w-full px-4 py-4 border-0 bg-white/70 backdrop-blur-sm rounded-2xl shadow-lg focus:ring-2 focus:ring-blue-500/30 focus:shadow-xl transition-all duration-300 text-gray-700 font-medium"
+                        className="w-full pl-12 pr-4 py-[10px] rounded-xl border  border-gray-200 focus:ring-1 outline-none focus:ring-green-500 focus:border-transparent transition-all duration-300 text-sm bg-gray-50 focus:bg-white"
                       >
                         <option value="active">Active</option>
                         <option value="inactive">Inactive</option>
@@ -491,21 +492,12 @@ const CustomerModal = ({ customer, onClose, onSuccess }) => {
                       value={formData.preferences.specialInstructions}
                       onChange={handleInputChange}
                       rows={4}
-                      className="w-full px-4 py-4 border-0 bg-white/70 backdrop-blur-sm rounded-2xl shadow-lg focus:ring-2 focus:ring-blue-500/30 focus:shadow-xl transition-all duration-300 placeholder-gray-400 text-gray-700 font-medium resize-none"
+                      className="w-full pl-12 pr-4 py-[10px] rounded-xl border  border-gray-200 focus:ring-1 outline-none focus:ring-green-500 focus:border-transparent transition-all duration-300 text-sm bg-gray-50 focus:bg-white"
                       placeholder="Any special instructions or notes about this customer..."
                     />
                   </div>
                 </div>
-              </motion.div>
-
-              {/* Referral Section */}
-              <motion.div
-                initial={{ y: 20, opacity: 0 }}
-                animate={{ y: 0, opacity: 1 }}
-                transition={{ delay: 0.4 }}
-                className="backdrop-blur-sm bg-white/60 rounded-2xl p-6 border border-white/30"
-              >
-                <div className="flex items-center space-x-3 mb-6">
+                <div className="flex items-center space-x-3 mb-6 mt-6">
                   <div className="w-10 h-10 bg-gradient-to-br from-cyan-400 to-cyan-600 rounded-xl flex items-center justify-center">
                     <UserIcon className="w-5 h-5 text-white" />
                   </div>
@@ -518,12 +510,14 @@ const CustomerModal = ({ customer, onClose, onSuccess }) => {
                   <label className="block text-sm font-semibold text-gray-700 mb-3">
                     Referred By (Optional)
                   </label>
+
                   <select
                     name="referredBy"
                     value={formData.referredBy}
                     onChange={handleInputChange}
-                    className="w-full px-4 py-4 border-0 bg-white/70 backdrop-blur-sm rounded-2xl shadow-lg focus:ring-2 focus:ring-blue-500/30 focus:shadow-xl transition-all duration-300 text-gray-700 font-medium"
+                    className="w-full pl-12 pr-4 py-[10px] rounded-xl border  border-gray-200 focus:ring-1 outline-none focus:ring-green-500 focus:border-transparent transition-all duration-300 text-sm bg-gray-50 focus:bg-white"
                   >
+                    <UserIcon className="w-5 h-5 text-gray-300" />
                     <option value="">Select a customer (if referred)</option>
                     {customers.map((referrer) => (
                       <option key={referrer._id} value={referrer._id}>
@@ -546,7 +540,7 @@ const CustomerModal = ({ customer, onClose, onSuccess }) => {
                   whileTap={{ scale: 0.98 }}
                   type="button"
                   onClick={onClose}
-                  className="px-8 py-4 bg-gray-100/80 hover:bg-gray-200/80 text-gray-700 font-semibold rounded-2xl transition-all duration-200 backdrop-blur-sm border border-gray-200/50"
+                  className="px-8 py-[8px] bg-gray-100/80 hover:bg-gray-200/80 text-gray-700 font-semibold rounded-2xl transition-all duration-200 backdrop-blur-sm border border-gray-200/50"
                 >
                   Cancel
                 </motion.button>
@@ -555,7 +549,7 @@ const CustomerModal = ({ customer, onClose, onSuccess }) => {
                   whileTap={{ scale: 0.98 }}
                   type="submit"
                   disabled={loading}
-                  className="px-8 py-4 bg-gradient-to-r from-blue-500 via-purple-500 to-purple-600 hover:from-blue-600 hover:via-purple-600 hover:to-purple-700 text-white font-semibold rounded-2xl transition-all duration-200 shadow-lg hover:shadow-xl disabled:opacity-50 disabled:cursor-not-allowed relative overflow-hidden"
+                  className="bg-gradient-to-r from-green-600 to-green-700 text-white py-[8px] px-6 rounded-xl font-semibold hover:from-green-700 hover:to-green-800 disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-300 flex items-center justify-center text-base shadow-lg hover:shadow-xl transform hover:-translate-y-0.5"
                 >
                   <span className="relative z-10">
                     {loading

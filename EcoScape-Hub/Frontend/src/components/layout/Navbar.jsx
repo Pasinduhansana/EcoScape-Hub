@@ -206,7 +206,7 @@ const Navbar = () => {
                   className={`px-4 py-2 rounded-xl text-sm font-medium transition-all duration-300 ${
                     scrolled
                       ? "text-gray-700 hover:bg-gray-100/80 backdrop-blur-sm"
-                      : "text-white hover:bg-white/20 backdrop-blur-sm"
+                      : "text-gray-700 hover:bg-white backdrop-blur-sm"
                   }`}
                 >
                   Login
@@ -216,7 +216,7 @@ const Navbar = () => {
                   className={`px-6 py-2 rounded-xl text-sm font-medium transition-all duration-300 ${
                     scrolled
                       ? "bg-green-600 text-white hover:bg-green-700 shadow-lg"
-                      : "bg-white/20 text-white hover:bg-white/30 backdrop-blur-sm"
+                      : "bg-green-600 text-white hover:bg-green-700 shadow-lg"
                   }`}
                 >
                   Get Started
