@@ -7,6 +7,11 @@ import {
   MapPinIcon,
   CalendarIcon,
   CogIcon,
+  BuildingOfficeIcon,
+  GlobeAltIcon,
+  ChatBubbleLeftRightIcon,
+  ExclamationCircleIcon,
+  DocumentTextIcon,
 } from "@heroicons/react/24/outline";
 import { motion, AnimatePresence } from "framer-motion";
 import { toast } from "react-hot-toast";
@@ -190,10 +195,10 @@ const CustomerModal = ({ customer, onClose, onSuccess }) => {
           <div className="absolute inset-0 bg-gradient-to-br from-blue-50/50 via-white/50 to-purple-50/50 rounded-3xl"></div>
 
           {/* Header */}
-          <div className="relative border-b border-gray-100/50 p-8">
+          <div className="relative border-b border-gray-100/50 p-8 pb-6">
             <div className="flex items-center justify-between">
               <div className="flex items-center space-x-4">
-                <div className="w-12 h-12 bg-gradient-to-br from-blue-500 to-purple-600 rounded-2xl flex items-center justify-center shadow-lg">
+                <div className="w-12 h-12 bg-gradient-to-br from-green-400 to-green-600  rounded-2xl flex items-center justify-center shadow-lg">
                   <UserIcon className="w-6 h-6 text-white" />
                 </div>
                 <div>
@@ -219,14 +224,14 @@ const CustomerModal = ({ customer, onClose, onSuccess }) => {
           </div>
 
           {/* Form Content */}
-          <div className="relative p-8 max-h-[80vh] overflow-y-auto">
+          <div className="relative p-8 max-h-[82vh] overflow-y-auto">
             <form onSubmit={handleSubmit} className="space-y-8">
               {/* Basic Information Section */}
               <motion.div
                 initial={{ y: 20, opacity: 0 }}
                 animate={{ y: 0, opacity: 1 }}
                 transition={{ delay: 0.1 }}
-                className="backdrop-blur-sm bg-white/60 rounded-2xl p-6 border border-white/30"
+                className="backdrop-blur-sm bg-white/60 rounded-2xl p-4 border border-white/30"
               >
                 <div className="flex items-center space-x-3 mb-6">
                   <div className="w-10 h-10 bg-gradient-to-br from-green-400 to-green-600 rounded-xl flex items-center justify-center">
@@ -342,62 +347,75 @@ const CustomerModal = ({ customer, onClose, onSuccess }) => {
                     <label className="block text-sm font-semibold text-gray-700 mb-3">
                       City *
                     </label>
-                    <input
-                      type="text"
-                      name="address.city"
-                      value={formData.address.city}
-                      onChange={handleInputChange}
-                      required
-                      className="w-full pl-12 pr-4 py-[10px] rounded-xl border  border-gray-200 focus:ring-1 outline-none focus:ring-green-500 focus:border-transparent transition-all duration-300 text-sm bg-gray-50 focus:bg-white"
-                      placeholder="New York"
-                    />
+                    <div className="relative">
+                      <BuildingOfficeIcon className="absolute left-4 top-1/2 transform -translate-y-1/2 h-5 w-5 text-gray-400" />
+                      <input
+                        type="text"
+                        name="address.city"
+                        value={formData.address.city}
+                        onChange={handleInputChange}
+                        required
+                        className="w-full pl-12 pr-4 py-[10px] rounded-xl border border-gray-200 focus:ring-1 outline-none focus:ring-green-500 focus:border-transparent transition-all duration-300 text-sm bg-gray-50 focus:bg-white"
+                        placeholder="New York"
+                      />
+                    </div>
                   </div>
+
                   <div>
                     <label className="block text-sm font-semibold text-gray-700 mb-3">
                       State *
                     </label>
-                    <input
-                      type="text"
-                      name="address.state"
-                      value={formData.address.state}
-                      onChange={handleInputChange}
-                      required
-                      className="w-full pl-12 pr-4 py-[10px] rounded-xl border  border-gray-200 focus:ring-1 outline-none focus:ring-green-500 focus:border-transparent transition-all duration-300 text-sm bg-gray-50 focus:bg-white"
-                      placeholder="NY"
-                    />
+                    <div className="relative">
+                      <MapPinIcon className="absolute left-4 top-1/2 transform -translate-y-1/2 h-5 w-5 text-gray-400" />
+                      <input
+                        type="text"
+                        name="address.state"
+                        value={formData.address.state}
+                        onChange={handleInputChange}
+                        required
+                        className="w-full pl-12 pr-4 py-[10px] rounded-xl border border-gray-200 focus:ring-1 outline-none focus:ring-green-500 focus:border-transparent transition-all duration-300 text-sm bg-gray-50 focus:bg-white"
+                        placeholder="NY"
+                      />
+                    </div>
                   </div>
 
                   <div>
                     <label className="block text-sm font-semibold text-gray-700 mb-3">
                       ZIP Code *
                     </label>
-                    <input
-                      type="text"
-                      name="address.zipCode"
-                      value={formData.address.zipCode}
-                      onChange={handleInputChange}
-                      required
-                      className="w-full pl-12 pr-4 py-[10px] rounded-xl border  border-gray-200 focus:ring-1 outline-none focus:ring-green-500 focus:border-transparent transition-all duration-300 text-sm bg-gray-50 focus:bg-white"
-                      placeholder="10001"
-                    />
+                    <div className="relative">
+                      <ExclamationCircleIcon className="absolute left-4 top-1/2 transform -translate-y-1/2 h-5 w-5 text-gray-400" />
+                      <input
+                        type="text"
+                        name="address.zipCode"
+                        value={formData.address.zipCode}
+                        onChange={handleInputChange}
+                        required
+                        className="w-full pl-12 pr-4 py-[10px] rounded-xl border border-gray-200 focus:ring-1 outline-none focus:ring-green-500 focus:border-transparent transition-all duration-300 text-sm bg-gray-50 focus:bg-white"
+                        placeholder="10001"
+                      />
+                    </div>
                   </div>
 
                   <div>
                     <label className="block text-sm font-semibold text-gray-700 mb-3">
                       Country
                     </label>
-                    <select
-                      name="address.country"
-                      value={formData.address.country}
-                      onChange={handleInputChange}
-                      className="w-full pl-12 pr-4 py-[10px] rounded-xl border  border-gray-200 focus:ring-1 outline-none focus:ring-green-500 focus:border-transparent transition-all duration-300 text-sm bg-gray-50 focus:bg-white"
-                    >
-                      <option value="USA">Sri Lanka</option>
-                      <option value="USA">Indias</option>
-                      <option value="USA">United States</option>
-                      <option value="CAN">Canada</option>
-                      <option value="MEX">Mexico</option>
-                    </select>
+                    <div className="relative">
+                      <GlobeAltIcon className="absolute left-4 top-1/2 transform -translate-y-1/2 h-5 w-5 text-gray-400" />
+                      <select
+                        name="address.country"
+                        value={formData.address.country}
+                        onChange={handleInputChange}
+                        className="w-full pl-12 pr-4 py-[10px] rounded-xl border border-gray-200 focus:ring-1 outline-none focus:ring-green-500 focus:border-transparent transition-all duration-300 text-sm bg-gray-50 focus:bg-white"
+                      >
+                        <option value="USA">Sri Lanka</option>
+                        <option value="USA">India</option>
+                        <option value="USA">United States</option>
+                        <option value="CAN">Canada</option>
+                        <option value="MEX">Mexico</option>
+                      </select>
+                    </div>
                   </div>
                 </div>
               </motion.div>
@@ -447,56 +465,64 @@ const CustomerModal = ({ customer, onClose, onSuccess }) => {
                       ))}
                     </div>
                   </div>
-
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div>
                       <label className="block text-sm font-semibold text-gray-700 mb-3">
                         Communication Method
                       </label>
-                      <select
-                        name="preferences.communicationMethod"
-                        value={formData.preferences.communicationMethod}
-                        onChange={handleInputChange}
-                        className="w-full pl-12 pr-4 py-[10px] rounded-xl border  border-gray-200 focus:ring-1 outline-none focus:ring-green-500 focus:border-transparent transition-all duration-300 text-sm bg-gray-50 focus:bg-white"
-                      >
-                        <option value="email">Email</option>
-                        <option value="phone">Phone</option>
-                        <option value="sms">SMS</option>
-                        <option value="mail">Mail</option>
-                      </select>
+                      <div className="relative">
+                        <ChatBubbleLeftRightIcon className="absolute left-4 top-1/2 transform -translate-y-1/2 h-5 w-5 text-gray-400" />
+                        <select
+                          name="preferences.communicationMethod"
+                          value={formData.preferences.communicationMethod}
+                          onChange={handleInputChange}
+                          className="w-full pl-12 pr-4 py-[10px] rounded-xl border border-gray-200 focus:ring-1 outline-none focus:ring-green-500 focus:border-transparent transition-all duration-300 text-sm bg-gray-50 focus:bg-white"
+                        >
+                          <option value="email">Email</option>
+                          <option value="phone">Phone</option>
+                          <option value="sms">SMS</option>
+                          <option value="mail">Mail</option>
+                        </select>
+                      </div>
                     </div>
 
                     <div>
                       <label className="block text-sm font-semibold text-gray-700 mb-3">
                         Status
                       </label>
-                      <select
-                        name="status"
-                        value={formData.status}
-                        onChange={handleInputChange}
-                        className="w-full pl-12 pr-4 py-[10px] rounded-xl border  border-gray-200 focus:ring-1 outline-none focus:ring-green-500 focus:border-transparent transition-all duration-300 text-sm bg-gray-50 focus:bg-white"
-                      >
-                        <option value="active">Active</option>
-                        <option value="inactive">Inactive</option>
-                        <option value="pending">Pending</option>
-                      </select>
+                      <div className="relative">
+                        <ExclamationCircleIcon className="absolute left-4 top-1/2 transform -translate-y-1/2 h-5 w-5 text-gray-400" />
+                        <select
+                          name="status"
+                          value={formData.status}
+                          onChange={handleInputChange}
+                          className="w-full pl-12 pr-4 py-[10px] rounded-xl border border-gray-200 focus:ring-1 outline-none focus:ring-green-500 focus:border-transparent transition-all duration-300 text-sm bg-gray-50 focus:bg-white"
+                        >
+                          <option value="active">Active</option>
+                          <option value="inactive">Inactive</option>
+                          <option value="pending">Pending</option>
+                        </select>
+                      </div>
                     </div>
                   </div>
-
                   <div>
                     <label className="block text-sm font-semibold text-gray-700 mb-3">
                       Special Instructions
                     </label>
-                    <textarea
-                      name="preferences.specialInstructions"
-                      value={formData.preferences.specialInstructions}
-                      onChange={handleInputChange}
-                      rows={4}
-                      className="w-full pl-12 pr-4 py-[10px] rounded-xl border  border-gray-200 focus:ring-1 outline-none focus:ring-green-500 focus:border-transparent transition-all duration-300 text-sm bg-gray-50 focus:bg-white"
-                      placeholder="Any special instructions or notes about this customer..."
-                    />
+                    <div className="relative">
+                      <DocumentTextIcon className="absolute left-4 top-4 h-5 w-5 text-gray-400" />
+                      <textarea
+                        name="preferences.specialInstructions"
+                        value={formData.preferences.specialInstructions}
+                        onChange={handleInputChange}
+                        rows={4}
+                        className="w-full pl-12 pr-4 py-[10px] rounded-xl border border-gray-200 focus:ring-1 outline-none focus:ring-green-500 focus:border-transparent transition-all duration-300 text-sm bg-gray-50 focus:bg-white"
+                        placeholder="Any special instructions or notes about this customer..."
+                      />
+                    </div>
                   </div>
                 </div>
+
                 <div className="flex items-center space-x-3 mb-6 mt-6">
                   <div className="w-10 h-10 bg-gradient-to-br from-cyan-400 to-cyan-600 rounded-xl flex items-center justify-center">
                     <UserIcon className="w-5 h-5 text-white" />
@@ -510,21 +536,22 @@ const CustomerModal = ({ customer, onClose, onSuccess }) => {
                   <label className="block text-sm font-semibold text-gray-700 mb-3">
                     Referred By (Optional)
                   </label>
-
-                  <select
-                    name="referredBy"
-                    value={formData.referredBy}
-                    onChange={handleInputChange}
-                    className="w-full pl-12 pr-4 py-[10px] rounded-xl border  border-gray-200 focus:ring-1 outline-none focus:ring-green-500 focus:border-transparent transition-all duration-300 text-sm bg-gray-50 focus:bg-white"
-                  >
-                    <UserIcon className="w-5 h-5 text-gray-300" />
-                    <option value="">Select a customer (if referred)</option>
-                    {customers.map((referrer) => (
-                      <option key={referrer._id} value={referrer._id}>
-                        {referrer.name} (#{referrer.registrationNumber})
-                      </option>
-                    ))}
-                  </select>
+                  <div className="relative">
+                    <UserIcon className="absolute left-4 top-1/2 transform -translate-y-1/2 h-5 w-5 text-gray-400" />
+                    <select
+                      name="referredBy"
+                      value={formData.referredBy}
+                      onChange={handleInputChange}
+                      className="w-full pl-12 pr-4 py-[10px] rounded-xl border border-gray-200 focus:ring-1 outline-none focus:ring-green-500 focus:border-transparent transition-all duration-300 text-sm bg-gray-50 focus:bg-white"
+                    >
+                      <option value="">Select a customer (if referred)</option>
+                      {customers.map((referrer) => (
+                        <option key={referrer._id} value={referrer._id}>
+                          {referrer.name} (#{referrer.registrationNumber})
+                        </option>
+                      ))}
+                    </select>
+                  </div>
                 </div>
               </motion.div>
 

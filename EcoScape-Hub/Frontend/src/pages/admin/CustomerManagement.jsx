@@ -613,17 +613,14 @@ const CustomerManagement = () => {
                           {customer.status}
                         </span>
                       </td>
-                      <td className="px-6 py-4 whitespace-nowrap">
+                      <td className="  px-6 py-4 whitespace-nowrap">
                         <span
-                          className={`inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium ${getLoyaltyBadgeColor(
+                          className={`inline-flex items-center justify-center w-16 text-center px-2.5 py-0.5 rounded-full text-xs font-medium ${getLoyaltyBadgeColor(
                             customer.loyaltyStatus
                           )}`}
                         >
-                          {customer.loyaltyStatus}
-                        </span>
-                        <div className="text-xs text-gray-500 mt-1">
                           {customer.loyaltyPoints} pts
-                        </div>
+                        </span>
                       </td>
                       <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
                         {customer.totalServicesCount}
