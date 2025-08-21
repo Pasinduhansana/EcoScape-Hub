@@ -515,7 +515,7 @@ const CustomerManagement = () => {
                 onClick={handleCreateCustomer}
                 className="bg-gradient-to-r from-green-600 to-green-700 text-white py-[8px] px-6 rounded-xl font-semibold hover:from-green-700 hover:to-green-800 disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-300 flex items-center justify-center text-base shadow-lg hover:shadow-xl transform hover:-translate-y-0.5"
               >
-                <div className="absolute inset-0 bg-gradient-to-r from-green-600 via-blue-600 to-purple-700 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                <div className="absolute inset-0 bg-gradient-to-r from-green-500  to-green-600 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                 <PlusIcon className="h-5 w-5 relative z-10" />
                 <span className="relative z-10">Add Customer</span>
               </motion.button>
@@ -558,9 +558,9 @@ const CustomerManagement = () => {
                     <td colSpan="8" className="px-6 py-16 text-center">
                       <div className="flex flex-col items-center justify-center space-y-4">
                         <div className="relative">
-                          <div className="w-12 h-12 border-4 border-blue-200 border-t-blue-600 rounded-full animate-spin"></div>
+                          <div className="w-12 h-12 border-4 border-green-200 border-t-green-600 rounded-full animate-spin"></div>
                           <div
-                            className="absolute inset-0 w-12 h-12 border-4 border-transparent border-t-purple-400 rounded-full animate-spin animate-reverse"
+                            className="absolute inset-0 w-12 h-12 border-4 border-transparent border-t-green-400 rounded-full animate-spin animate-reverse"
                             style={{ animationDuration: "1.5s" }}
                           ></div>
                         </div>
